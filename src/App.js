@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ResponsiveAppBar from './ResponsiveAppBar';
+import EspCameraFeed from './EspCameraFeed';
+import EspCameraControl from './EspCameraControl';
+import PhotoGallery from './PhotoGallery';
+import LocalGallery from './LocalGallery';
+import FacesGallery from './FacesGallery';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <ResponsiveAppBar />
+        <Routes>
+          <Route path="/camera-feed" element={<EspCameraFeed />} />
+          <Route path="/camera-control" element={<EspCameraControl />} />
+          <Route path="/gallery" element={<PhotoGallery />} />
+          <Route path="/local-gallery" element={<LocalGallery />} />
+          <Route path="/faces-gallery" element={<FacesGallery />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
